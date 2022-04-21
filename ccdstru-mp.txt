@@ -1,0 +1,110 @@
+APPLICABLE SETS
+    R: {x ∈ Z+ | x ≤ 7}
+    Interpret: 
+        Set R is a set of positive integer less than or equal to 7
+    Decode:
+        R: {1,2,3,4,5,6,7}
+
+    C: {x ∈ Z+ | x ≤ 5}
+    Interpret:
+        Set C is a set of positive integer less than or equal to 5
+    Decode:
+        C: {1,2,3,4,5}
+
+    P: R × C
+    Interpret:
+        P is the cartesian product of set R and set C
+    Decode:
+        P: {
+                (1,1),(1,2),(1,3),(1,4),(1,5),
+                (2,1),(2,2),(2,3),(2,4),(2,5),
+                (3,1),(3,2),(3,3),(3,4),(3,5),
+                (4,1),(4,2),(4,3),(4,4),(4,5),
+                (5,1),(5,2),(5,3),(5,4),(5,5),
+                (6,1),(6,2),(6,3),(6,4),(6,5),
+                (7,1),(7,2),(7,3),(7,4),(7,5)
+            }
+
+    S: {(x,y) ∈ P | x mod 2 = y mod 2}
+    Interpret:
+        S is a set of elements of P such that x mod 2 is equal to y mod 2
+        S is a set of elements of P such that x and y are both even or both odd
+    Decode:
+        S: {
+                (1,1),      (1,3),      (1,5),      - odd
+                      (2,2),      (2,4),            - even
+                (3,1),      (3,3),      (3,5)       - odd
+                      (4,2),      (4,4),            - even
+                (5,1),      (5,3),      (5,5),      - odd
+                      (6,2),      (6,4),            - even
+                (7,1),      (7,3),      (7,5)       - odd
+            }
+
+    Y: {(x,y) ∈ S | x ≤ 2}
+    Interpret:
+        Y is a set of elements of S such that x is less than or equal to 2
+    Decode:
+        Y: {(1,1),(1,3),(1,5),(2,2),(2,4)}
+
+    E: {(x,y) ∈ S | x ≥ 6}
+    Interpret:
+        E is a set of elements of S such that x is greater than or equal to 6
+    Decode:
+        E: {(6,2),(6,4),(7,1),(7,3),(7,5)}
+
+    B: {true, false}
+    Interpret:
+        B is a set of boolean values
+    Decode:
+        B: {true,false}
+    NOTE: *in using C language*
+        B:{0,1}
+
+SYSTEM VARIABLES
+    Alpha,Beta,Free ⊆ P
+    Interpret:
+        Alpha, Beta, and Free are subset of P
+    Decode:
+        Alpha can be any value in set P
+        Beta can be any value in set P
+        Free can be any value in set P
+    
+    aTurn ∈ B
+    Interpret:
+        aTurn is an element of B
+        aTurn is a boolean value
+    Decode:
+        aTurn = true, false
+    
+    over ∈ B 
+    Interpret:
+        over is an element of B 
+        over is a boolean value
+    Decode:
+        over = true, false
+
+    ok ∈ B 
+    Interpret:
+        ok is an element of B 
+        ok is a boolean value 
+    Decode:
+        ok = true, false
+    
+SYSTEM FACTS
+    Free = P - (Alpha ∪ Beta)
+    Interpret:
+        Free is the difference of P to union of Alpha and Beta
+    
+    over ⇔ (|Alpha|=0 v |Beta|=0 v Alpha ≠ Ø ^ |Alpha - Y|=0 v Beta ≠ Ø ^ |Beta-E|=0)
+    Interpret:
+        *blank*
+
+SYSTEM INITIALIZATION
+    over = false
+    ok = false
+    aTurn = true
+    Alpha = E 
+    Beta = Y 
+
+SYSTEM STATES AND BEHAVIOR
+    *continue*
