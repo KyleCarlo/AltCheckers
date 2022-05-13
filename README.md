@@ -10,7 +10,7 @@ Date started: April 21, 2022.
 - Adam Mendoza
 
 ## Specifications 
-Please refer to <a href="">CCDSTRU-MP-Term-2-AY-2021-2022.pdf<a> for the machine project specifications.
+Please refer to <a href="https://github.com/KyleCarlo/CCDSTRU_Gr1/blob/main/CCDSTRU-MP-Term-2-AY-2021-2022.pdf">CCDSTRU-MP-Term-2-AY-2021-2022.pdf<a> for the machine project specifications.
 
 ## Prerequisites
 Individual must be knowledgeable to:
