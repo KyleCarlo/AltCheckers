@@ -8,13 +8,13 @@ typedef enum {True = 1, False = 0} bool;
 typedef int cart_p[2];
 // enum {AlphaWins = 1, BetaWins = 0};
 
-void inputPlayerMove(cart_p nPrev, cart_p nNext);
-int isInputESet(cart_p input, cart_p nSet[]);
-int isAdjacent(int nB, int nD);
-int isInputEFree(cart_p input, cart_p nAlpha[], cart_p nBeta[]);
-void replaceESet(const cart_p add, cart_p remove, cart_p nSet[]);
-int isInputESpec(cart_p input);
-void printBoard(cart_p nAlpha[], cart_p nBeta[]);
+void inputPlayerMove(cart_p nPrev, cart_p nNext);                   //asking for piece selection and movement
+int isInputESet(cart_p input, cart_p nSet[]);                       //checking if the input is an element of given set
+int isAdjacent(int nB, int nD);                                     //checking if the movement is diagonal or straight forward
+int isInputEFree(cart_p input, cart_p nAlpha[], cart_p nBeta[]);    //checking if the movement is or not included in Alpha and Beta set
+void replaceESet(const cart_p add, cart_p remove, cart_p nSet[]);   //checking if a piece can take down the oppenent's piece
+int isInputESpec(cart_p input);                                     //checking if the input is an element of S set
+void printBoard(cart_p nAlpha[], cart_p nBeta[]);                   //prints the board and pieces of players
 
 int main()
 {
@@ -76,7 +76,8 @@ int main()
         {
             if (bool_aTurn)
             {
-                if (isInputEFree(nNext, nAlpha, nBeta))     //ok ^ aTurn ^ next 2 Free
+                
+                if (isInputEFree(nNext, nAlpha, nBeta))     //ok ^ aTurn ^ next E Free
                 {
                     replaceESet(nNext, nPrev, nAlpha);      //replace nNext to nPrev
                     bool_aTurn = !bool_aTurn;
@@ -148,7 +149,7 @@ int isInputESet(cart_p input, cart_p nSet[])
     int i;
 
     for (i = 0; i < 5; i++)
-        if (*input == *nSet[i])
+        if (input[0] == nSet[i][0] && input[1] == nSet[i][1])
             return True;
 
     return False;
@@ -166,7 +167,7 @@ int isInputEFree(cart_p input, cart_p nAlpha[], cart_p nBeta[])
 {
     if (!isInputESet(input, nAlpha) && !isInputESet(input, nBeta))
         return True;
-
+    
     return False;
 }
 
@@ -175,7 +176,7 @@ void replaceESet(const cart_p add, cart_p remove, cart_p nSet[])
     int i;
     for (i = 0; i < 5; i++)
     {
-        if (*remove == *nSet[i])
+        if (remove[0] == nSet[i][0] && remove[1] == nSet[i][1])
         {
             nSet[i][0] = add[0];
             nSet[i][1] = add[1];
