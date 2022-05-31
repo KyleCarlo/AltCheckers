@@ -98,7 +98,7 @@ int main()
                         bool_aTurn = !bool_aTurn; 
                     }    
 
-                if (pieceCounter(nAlpha) > 0 && isYorE(nAlpha, bool_aTurn))
+                if (pieceCounter(nBeta) || pieceCounter(nAlpha) > 0 && isYorE(nAlpha, bool_aTurn))
                 {
                     bool_over = True;       
                     strcpy(winner, "ALPHA");
@@ -120,7 +120,7 @@ int main()
                         bool_aTurn = !bool_aTurn;
                     }
 
-                if (pieceCounter(nBeta) > 0 && isYorE(nBeta, bool_aTurn))
+                if (pieceCounter(nAlpha) || pieceCounter(nBeta) > 0 && isYorE(nBeta, bool_aTurn))
                 {
                     bool_over = True;  
                     strcpy(winner, "BETA");
